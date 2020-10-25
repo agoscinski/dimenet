@@ -36,5 +36,6 @@ class OutputPPBlock(layers.Layer):
 
         for layer in self.dense_layers:
             x = layer(x)
+        self.representation = x
         x = self.dense_final(x)
         return x
