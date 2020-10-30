@@ -32,10 +32,11 @@ class OutputPPBlock(layers.Layer):
         x = g * x
         x = tf.math.unsorted_segment_sum(x, idnb_i, n_atoms)
 
+        self.representation = x
+
         x = self.up_projection(x)
 
         for layer in self.dense_layers:
             x = layer(x)
-        self.representation = x
         x = self.dense_final(x)
         return x
